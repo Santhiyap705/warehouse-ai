@@ -715,6 +715,10 @@ filtered = recommendations[
     recommendations["store_id"] == selected_store
 ]
 
+st.sidebar.write("Selected Store:", selected_store)
+st.sidebar.write("Filtered Records:", len(filtered))
+st.sidebar.write("Available Items:", len(filtered["item_id"].unique()))
+
 item_list = sorted(
     filtered["item_id"].unique()
 )
