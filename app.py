@@ -691,7 +691,7 @@ with col_health:
 
     st.plotly_chart(
         fig_priority,
-        use_container_width=True
+         width="stretch"
     )
 
 # ==========================================
