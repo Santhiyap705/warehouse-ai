@@ -470,7 +470,7 @@ def load_sales_data():
 def load_model():
 
     return joblib.load(
-        "lightgbm_model.pkl"
+        "models/lightgbm_model.pkl"
     )
 
 sales_data = load_sales_data()
