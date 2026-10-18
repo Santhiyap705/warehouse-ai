@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import joblib
+from huggingface_hub import hf_hub_download
 
 
 # ==========================================
