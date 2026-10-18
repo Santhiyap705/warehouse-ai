@@ -585,7 +585,7 @@ with tile1:
 
     if st.button(
         "📈\nDemand Intelligence",
-        use_container_width=True,
+        width='stretch,
         key="tile_demand"
     ):
 
