@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import joblib
+from huggingface_hub import hf_hub_download
 
 
 # ==========================================
@@ -404,38 +405,41 @@ st.markdown(
 )
 
 
-# ==========================================
-# LOAD FINAL RECOMMENDATIONS
-# ==========================================
+HF_REPO_ID = "sandhusandy/warehouse-ai-data"
 
-recommendations = pd.read_csv(
-    "data/final_inventory_recommendations.csv"
+@st.cache_data
+def load_csv_from_huggingface(filename):
+    file_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=filename,
+        repo_type="dataset"
+    )
+    return pd.read_csv(file_path)
+
+recommendations = load_csv_from_huggingface(
+    "final_inventory_recommendations.csv"
+)
+
+stockout = load_csv_from_huggingface(
+    "stockout_analysis.csv"
 )
 
 
-# ==========================================
-# LOAD STOCKOUT ANALYSIS
-# ==========================================
-
-stockout = pd.read_csv(
-    "data/stockout_analysis.csv"
-)
-
-
-# ==========================================
 # LOAD HISTORICAL SALES DATA
 # ==========================================
 
 @st.cache_data
 def load_sales_data():
 
-    df = pd.read_csv(
-        "data/processed_retail_sales.csv"
+    file_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename="processed_retail_sales.csv",
+        repo_type="dataset"
     )
 
-    df["date"] = pd.to_datetime(
-        df["date"]
-    )
+    df = pd.read_csv(file_path)
+
+    df["date"] = pd.to_datetime(df["date"])
 
     return df
 
