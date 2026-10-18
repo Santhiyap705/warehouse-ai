@@ -1,0 +1,15 @@
+# Dataset files
+data/*.csv
+
+# Python environment
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+.streamlit/secrets.toml
+
+# VS Code settings
+.vscode/
