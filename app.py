@@ -801,7 +801,7 @@ with col_stockout:
 
     st.plotly_chart(
         fig_stockout,
-        use_container_width=True
+       width='stretch
     )
 
 
