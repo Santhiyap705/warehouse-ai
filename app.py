@@ -416,16 +416,30 @@ st.markdown(
 )
 
 # ==========================================
-# LOAD FINAL RECOMMENDATIONS
+# LOAD DATA FROM HUGGING FACE
 # ==========================================
 
-recommendations = pd.read_csv(
-    "data/final_inventory_recommendations.csv"
+HF_REPO_ID = "sandhusandy/warehouse-ai-data"
+
+
+@st.cache_data
+def load_csv_from_huggingface(filename):
+
+    file_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=filename,
+        repo_type="dataset"
+    )
+
+    return pd.read_csv(file_path)
+
+
+recommendations = load_csv_from_huggingface(
+    "final_inventory_recommendations.csv"
 )
 
-# Load stockout analysis
-stockout = pd.read_csv(
-    "data/stockout_analysis.csv"
+stockout = load_csv_from_huggingface(
+    "stockout_analysis.csv"
 )
 
 # ==========================================
