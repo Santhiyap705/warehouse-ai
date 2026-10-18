@@ -443,15 +443,19 @@ stockout = load_csv_from_huggingface(
 )
 
 # ==========================================
-# LOAD HISTORICAL SALES DATA
+# LOAD HISTORICAL SALES DATA FROM HUGGING FACE
 # ==========================================
 
 @st.cache_data
 def load_sales_data():
 
-    df = pd.read_csv(
-        "data/processed_retail_sales.csv"
+    file_path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename="processed_retail_sales.csv",
+        repo_type="dataset"
     )
+
+    df = pd.read_csv(file_path)
 
     df["date"] = pd.to_datetime(df["date"])
 
