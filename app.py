@@ -428,7 +428,8 @@ def load_csv_from_huggingface(filename):
     file_path = hf_hub_download(
         repo_id=HF_REPO_ID,
         filename=filename,
-        repo_type="dataset"
+        repo_type="dataset",
+        token=st.secrets["HF_TOKEN"]
     )
 
     return pd.read_csv(file_path)
@@ -452,7 +453,8 @@ def load_sales_data():
     file_path = hf_hub_download(
         repo_id=HF_REPO_ID,
         filename="processed_retail_sales.csv",
-        repo_type="dataset"
+        repo_type="dataset",
+        token=st.secrets["HF_TOKEN"]
     )
 
     df = pd.read_csv(file_path)
