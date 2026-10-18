@@ -902,7 +902,7 @@ if st.session_state["analysis_section"] == "demand":
 
         st.plotly_chart(
             fig_forecast,
-            use_container_width=True
+            width="content"
         )
 
 
