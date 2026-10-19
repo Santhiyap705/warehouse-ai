@@ -475,7 +475,7 @@ def load_model():
         "models/lightgbm_model.pkl"
     )
 
-sales_data = load_sales_data()
+#sales_data = load_sales_data()
 
 model = load_model()
 
