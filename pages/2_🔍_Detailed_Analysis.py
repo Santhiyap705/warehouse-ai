@@ -428,7 +428,6 @@ stockout = load_csv_from_huggingface(
 
 # LOAD HISTORICAL SALES DATA
 # ==========================================
-
 @st.cache_data
 def load_sales_data():
 
@@ -439,9 +438,14 @@ def load_sales_data():
         token=st.secrets["HF_TOKEN"]
     )
 
-    df = pd.read_csv(file_path)
-
-    df["date"] = pd.to_datetime(df["date"])
+    df = pd.read_csv(
+        file_path,
+        parse_dates=["date"],
+        dtype={
+            "store_id": "category",
+            "item_id": "category"
+        }
+    )
 
     return df
 
