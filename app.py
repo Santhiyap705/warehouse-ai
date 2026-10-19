@@ -435,13 +435,19 @@ def load_csv_from_huggingface(filename):
     return pd.read_csv(file_path)
 
 
+st.write("Step 1: Loading recommendations...")
+
 recommendations = load_csv_from_huggingface(
     "final_inventory_recommendations.csv"
 )
 
+st.write("Step 2: Recommendations loaded successfully!")
+
 stockout = load_csv_from_huggingface(
     "stockout_analysis.csv"
 )
+
+st.write("Step 3: Stockout data loaded successfully!")
 
 # ==========================================
 # LOAD HISTORICAL SALES DATA FROM HUGGING FACE
