@@ -458,9 +458,12 @@ def load_model():
     )
 
 
-sales_data = load_sales_data()
+sales_data = None
+model = None
 
-model = load_model()
+if st.session_state.get("analysis_section") == "demand":
+    sales_data = load_sales_data()
+    model = load_model()
 
 
 # ==========================================
