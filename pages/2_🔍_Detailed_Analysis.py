@@ -634,8 +634,10 @@ with tile4:
 
 sku_sales = pd.DataFrame()
 
-if st.session_state.get("analysis_section") == "demand":
-
+if (
+    st.session_state.get("analysis_section") == "demand"
+    and sales_data is not None
+):
     sku_sales = sales_data[
         (sales_data["store_id"] == selected_store) &
         (sales_data["item_id"] == selected_item)
