@@ -55,8 +55,11 @@ st.markdown("""
 }
 
 header[data-testid="stHeader"] {
-    background: transparent;
+    background: transparent !important;
+    height: 3.5rem !important;
+    visibility: visible !important;
 }
+
 
 /* Keep the sidebar toggle visible */
 [data-testid="stSidebarCollapsedControl"] {
