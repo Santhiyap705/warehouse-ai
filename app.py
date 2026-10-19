@@ -755,7 +755,6 @@ filtered = recommendations[
     recommendations["store_id"] == selected_store
 ]
 
-
 item_list = sorted(
     filtered["item_id"].unique()
 )
