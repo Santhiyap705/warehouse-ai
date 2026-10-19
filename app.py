@@ -56,11 +56,20 @@ st.markdown("""
 
 header[data-testid="stHeader"] {
     background: transparent;
-    height: 0rem;
 }
 
-header[data-testid="stHeader"] * {
-    visibility: hidden;
+/* Keep the sidebar toggle visible */
+[data-testid="stSidebarCollapsedControl"] {
+    visibility: visible !important;
+    display: flex !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+}
+
+/* Keep the sidebar close button visible */
+[data-testid="stSidebar"] button {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 
@@ -281,6 +290,28 @@ section[data-testid="stSidebar"]
     color: #F8FAFC !important;
 }
 
+/* Ensure the sidebar and its content remain visible */
+section[data-testid="stSidebar"] {
+    visibility: visible !important;
+    display: block !important;
+    min-width: 250px;
+}
+
+/* Make sidebar widgets visible */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Make dropdowns readable */
+section[data-testid="stSidebar"] [data-baseweb="select"] {
+    color: #F8FAFC !important;
+    background-color: #0F2748 !important;
+}
+
+section[data-testid="stSidebar"] [data-baseweb="select"] * {
+    color: #F8FAFC !important;
+}
 
 /* =========================================
    STREAMLIT METRICS
