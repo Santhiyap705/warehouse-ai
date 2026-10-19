@@ -1144,43 +1144,26 @@ elif st.session_state["analysis_section"] == "inventory":
     priority = sku["priority"]
 
 
-    # ======================================
-    # INVENTORY METRICS
-    # ======================================
+   # ======================================
+# INVENTORY METRICS
+# ======================================
 
-    col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 
+col1.metric(
+    "Safety Stock",
+    f"{recommended_safety_stock:,.0f}"
+)
 
-    if forecast_available:
+col2.metric(
+    "Reorder Point",
+    f"{recommended_reorder_point:,.0f}"
+)
 
-        col1.metric(
-            "30-Day Forecast",
-            f"{total_forecast:,.0f}"
-        )
-
-    else:
-
-        col1.metric(
-            "30-Day Forecast",
-            "N/A"
-        )
-
-
-    col2.metric(
-        "Safety Stock",
-        f"{recommended_safety_stock:,.0f}"
-    )
-
-    col3.metric(
-        "Reorder Point",
-        f"{recommended_reorder_point:,.0f}"
-    )
-
-    col4.metric(
-        "Order Quantity",
-        f"{recommended_order_quantity:,}"
-    )
-
+col3.metric(
+    "Order Quantity",
+    f"{recommended_order_quantity:,}"
+)
 
     # ======================================
     # INVENTORY COVERAGE
