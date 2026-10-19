@@ -632,14 +632,18 @@ with tile4:
 # PREPARE FORECAST DATA
 # ==========================================
 
-sku_sales = sales_data[
-    (sales_data["store_id"] == selected_store) &
-    (sales_data["item_id"] == selected_item)
-].copy()
+sku_sales = pd.DataFrame()
 
-sku_sales = sku_sales.sort_values(
-    "date"
-).reset_index(drop=True)
+if st.session_state.get("analysis_section") == "demand":
+
+    sku_sales = sales_data[
+        (sales_data["store_id"] == selected_store) &
+        (sales_data["item_id"] == selected_item)
+    ].copy()
+
+    sku_sales = sku_sales.sort_values(
+        "date"
+    ).reset_index(drop=True)
 
 
 forecast_available = False
@@ -651,7 +655,6 @@ total_forecast = 0
 average_forecast = 0
 
 peak_forecast = 0
-
 
 # ==========================================
 # CREATE 30-DAY FORECAST
